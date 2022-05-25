@@ -55,20 +55,21 @@ if($mysqli){
     <title>Biblioweb</title>
 </head>
 <body>
-    <a href="index.php" id="titre"><h1>Biblioweb</h1></a>
-        <div><?= $message ?></div>
-            <div>
-                <form action="<?= $_SERVER['PHP_SELF']?>" method="get" id="frm">
-                <label for="keyword" id="label">Rechercher un auteur</label>
-                <input type="text" name="keyword" id="keyword">
-                <button>Rechercher</button><br>
-                </form>
-            </div>
-           
-            <div class="liste"><?php foreach($books as $book) {?> 
-                    <p class="title"><?= $book['title']?></p>
-                <?php }?>
-                <p class="authors"><strong><?= $book['firstname']?> <?=$book['lastname']?></strong></p>
-            </div>     
+    <h1><a href="index.php" id="titre">Biblioweb</a></h1>
+	<h2>Livres d'un auteur</h2>
+    <div><?= $message ?></div>
+	<div>
+		<form action="<?= $_SERVER['PHP_SELF']?>" method="get" id="frm">
+			<label for="keyword" id="label">Rechercher un auteur</label>
+			<input type="text" name="keyword" id="keyword" value="<?= $keyword ?>">
+			<button>Rechercher</button><br>
+		</form>
+	</div>
+
+	<h3 class="authors"><strong><?= $books[0]['firstname'] ?? '' ?> <?=$books[0]['lastname'] ?? '' ?></strong></h3>
+	<div class="liste"><?php foreach($books as $book) {?> 
+		<p class="title"><?= $book['title']?></p>
+		<?php }?>
+	</div>    
 </body>
 </html>
